@@ -3,9 +3,12 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 const modalErrorClass = document.body.querySelector("div");
 const heartButtons = document.getElementsByClassName("like-glyph");
+console.log(heartButtons);
+console.log(modalErrorClass);
 
 for (let index = 0; index < heartButtons.length; index++) {
 heartButtons[index].addEventListener("click", (event) => {
+console.log(event.target.textContent)
 mimicServerCall()
 .then(()=> {
   if (event.target.textContent === EMPTY_HEART) {
@@ -19,13 +22,43 @@ mimicServerCall()
 })
 .catch((error) => {
   console.error(error.message); 
-  modalErrorClass.classList.remove("hidden"); 
+  modalErrorClass.classList.remove("hidden");
   setTimeout(() => {
     modalErrorClass.classList.add("hidden");
   }, 3000);
 })
 })}
 
+
+// heartButton.addEventListener("click",renderHeartButton);
+
+// function eventHandler(event){
+//   heartButton.addEventListener(click, event => {
+//     const myHeartClicked = document.getElementById(`${event.target.id}`)
+//   });
+//   return myHeartClicked;
+//   renderHeartButton (myHeartClicked);
+// }
+
+// function renderHeartButton () { 
+//   mimicServerCall()
+//   .then((response) => {
+//     if (heartButton.textContent === EMPTY_HEART) {
+//       heartButton.textContent = FULL_HEART;
+//       heartButton.textContent.append(heartButton.textContent.activated-heart);
+//     }
+//     else if (heartButton.textContent === FULL_HEART) {
+//       heartButton.textContent = EMPTY_HEART;
+//     }})
+//       .catch((error) => {
+//         console.error(error);
+//         setTimeout(() => {
+//           hiddenModal.remove()
+//         }, "3000")
+//       });
+
+
+// }
 
 
 //------------------------------------------------------------------------------
